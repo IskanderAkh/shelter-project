@@ -1,0 +1,119 @@
+.navbar {
+    padding-bottom: 3px !important;
+    z-index: 45;
+}
+
+.line {
+    width: 1px;
+    height: 17px;
+    position: relative;
+
+    &::after {
+        position: absolute;
+        display: flex;
+        content: '';
+        top: 0;
+        right: 0;
+        background: rgba(128, 128, 128, 0.726);
+        height: 100%;
+        width: 1px;
+    }
+}
+
+.active {
+    &::after {
+        width: 100%;
+        height: 2px;
+        z-index: 50;
+        background: black;
+        position: absolute;
+        bottom: -21px;
+        left: 0;
+        content: '';
+    }
+}
+
+.shopmenu {
+    top: 20px;
+}
+
+.titleText {
+    /* 14px - Body Medium */
+    color: rgb(0, 0, 0);
+    font-family: DM Sans;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0%;
+    text-align: left;
+}
+
+.menu :where(li ul) {
+    position: relative;
+    white-space: nowrap;
+    margin-inline-start: 0 !important;
+    padding-inline-start: 0.5rem;
+}
+
+.logo {
+    font-family: 'Allerta' !important;
+    font-weight: 400;
+
+    & span {
+        color: #A18A68;
+    }
+
+    text-shadow: rgba(0, 0, 0, 0.432) -1px 1px 5px;
+}
+
+.navbar-list {
+    & li {
+        position: relative;
+    }
+}
+
+.burger-menu {
+    &-li {
+
+        /* 20px - Heading 3 */
+        color: rgb(0, 0, 0);
+        font-family: DM Sans;
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 26px;
+        letter-spacing: 0%;
+
+
+        text-align: left;
+    }
+}
+
+.burger-line {
+    width: 100% !important;
+    // height: 1px;
+    margin-top: 30px;
+    /* Light Colors/Gray - Light */
+    border: 1px solid rgb(216, 216, 216);
+}
+
+.burger-search-input {
+    color: rgb(112, 112, 112);
+    font-family: DM Sans;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0%;
+    text-align: left;
+}
+
+@media (max-width: 768px) {
+    .navbar-right {
+        display: none;
+    }
+}
+
+@media (min-width: 770px) {
+    .burger {
+        display: none;
+    }
+}

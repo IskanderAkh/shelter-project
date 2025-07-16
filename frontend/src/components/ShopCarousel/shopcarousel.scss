@@ -1,0 +1,115 @@
+@keyframes openAndClose {
+    0% {
+        transform: scaleY(0);
+    }
+
+    100% {
+        transform: scaleY(1);
+    }
+}
+
+@keyframes closeAndOpen {
+    0% {
+        transform: scaleY(1);
+    }
+
+    90% {
+        transform: scaleY(0);
+        opacity: 0.1;
+    }
+
+    100% {
+        height: 0;
+    }
+}
+
+
+.collection-carousel-filters {
+    max-width: none;
+    padding: 0;
+    margin-bottom: 50px;
+}
+
+.text-carousel-gold {
+    display: flex;
+    color: #A18A68;
+}
+
+.filters-carousel-container {
+    display: none;
+    transform-origin: top;
+    transform: scaleY(0);
+    // transition: transform 0.5s ease-in-out;
+}
+
+.opened {
+    display: block;
+    animation: openAndClose 0.5s ease-in-out forwards;
+}
+
+.closed {
+    display: block;
+    animation: closeAndOpen ease-in-out forwards;
+}
+
+.shopcarousel {
+    .swiper {
+        width: 100%;
+        height: 100%;
+    }
+
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        padding: 0 25px;
+        /* Center slide text vertically */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .item-img {
+            // width: 300px;
+            height: 300px;
+        }
+    }
+
+
+    .swiper {
+        margin-left: auto;
+        padding: 29px;
+        margin-right: auto;
+    }
+
+    .swiper-button-next {
+        top: 45%;
+        right: -5px;
+
+        &::after {
+            font-size: 25px;
+            font-weight: bold;
+            color: black;
+        }
+    }
+
+    .swiper-button-prev {
+        top: 45%;
+        left: -5px;
+
+        &::after {
+            font-size: 25px;
+            font-weight: bold;
+            color: black;
+        }
+    }
+
+}
+
+
+
+@media (max-width: 768px) {
+    .collectiondiv {
+        gap: 20px !important;
+    }
+
+}

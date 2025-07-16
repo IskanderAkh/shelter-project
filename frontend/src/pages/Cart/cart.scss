@@ -1,0 +1,58 @@
+.cart-title {
+    /* 33px - Heading 1 */
+    color: rgb(0, 0, 0);
+    font-family: DM Sans;
+    font-size: 33px;
+    font-weight: 500;
+    line-height: 43px;
+    letter-spacing: 0%;
+    text-align: left;
+    margin-top: 96px;
+}
+
+.cart-item {
+
+    &-img {
+        height: auto;
+    }
+
+    &-details {
+        & h4 {
+            color: rgb(0, 0, 0);
+            font-family: DM Sans;
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 26px;
+            letter-spacing: 0%;
+            text-align: left;
+        }
+
+        & h6 {
+            color: rgb(112, 112, 112);
+            font-family: DM Sans;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 27px;
+            letter-spacing: 0%;
+            text-align: left;
+        }
+
+        & p {
+            /* 16px - Heading 5 */
+            color: rgb(161, 138, 104);
+            font-family: DM Sans;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 27px;
+            letter-spacing: 0%;
+            text-align: left;
+        }
+    }
+}
+
+.cart {
+    &-summary {
+        width: 100%;
+        max-width: 462px;
+    }
+}

@@ -1,0 +1,20 @@
+/* Add this to your Magnifier.scss */
+// .relative {
+//     position: relative;
+//     overflow: hidden; // Ensure the glass doesn't overflow outside the container
+// }
+
+.img-magnifier-glass {
+    width: 200px; // Set your desired size
+    height: 200px;
+    cursor: none;
+    pointer-events: none; // Prevent glass from capturing mouse events
+    border-radius: 50%; // Make it a circle
+    z-index: 10; // Ensure it appears above the image
+}
+
+.w-1080px {
+    max-width: 768px !important;
+    width: 100%;
+    // overflow: hidden; // Prevent content overflow
+}
