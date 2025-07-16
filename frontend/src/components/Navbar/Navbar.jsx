@@ -2,9 +2,6 @@ import React, { useState } from 'react'
 import './navbar.scss'
 import { Link } from 'react-router-dom'
 import Burger from './Burger'
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
-import toast from 'react-hot-toast'
-import getCart from '../../Hooks/useGetCart'
 import { useCart } from '../../Context/CartContext'
 import { useLocation } from 'react-router-dom'
 import ShopMenu from './ShopMenu'
@@ -12,7 +9,7 @@ const Navbar = ({ authUser }) => {
     const location = useLocation()
     const { cart } = useCart();
 
-    const cartItemCount = Object.keys(cart).length || 0;
+    const cartItemCount = Object.keys(cart)?.length || 0;
     return (
         <div className='navbar m-auto mt-5 pl-0 '>
             <div className="navbar bg-base-100 ">
@@ -29,7 +26,7 @@ const Navbar = ({ authUser }) => {
                                 </div>
                             </div>
                         </li>
-                        {authUser.status === 'admin' && (
+                        {authUser?.status === 'admin' && (
                             <li><Link to={"/dashboard"} className={`cursor-pointer after:bg-secondary ${location.pathname === "/dashboard" ? "active" : ""}`}>Dashboard</Link></li>
 
                         )}

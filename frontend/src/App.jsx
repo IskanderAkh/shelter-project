@@ -35,8 +35,9 @@ function App() {
     retry: false,
   });
 
-  const isAdmin = authUser?.status == "admin";
+  const isAdmin = authUser?.status === "admin"; // ✅ Safe
   if (isLoading) return <div className="p-10 text-center">Loading...</div>;
+  console.log(isAdmin);
 
   return (
     <>
