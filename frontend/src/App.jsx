@@ -35,12 +35,13 @@ function App() {
     retry: false,
   });
 
-  const isAdmin = authUser?.status === "admin";
+  const isAdmin = authUser?.status == "admin";
+  if (isLoading) return <div className="p-10 text-center">Loading...</div>;
 
   return (
     <>
       <div className="container">
-        <Navbar authUser={authUser}/>
+        <Navbar authUser={authUser} />
         {location.pathname !== "/" && (
           <div className="border-b border-gray-300 w-full"></div>
         )}
