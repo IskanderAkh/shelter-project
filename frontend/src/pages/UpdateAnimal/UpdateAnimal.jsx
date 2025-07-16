@@ -77,7 +77,7 @@ const UpdateAnimal = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {filtered.map(animal => (
+                                {filtered?.map(animal => (
                                     <AnimalRow key={animal._id} animal={animal} onUpdate={updateMutation.mutate} />
                                 ))}
                             </tbody>

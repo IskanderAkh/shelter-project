@@ -71,7 +71,7 @@ const AddMedicalRecord = () => {
                         required
                     >
                         <option value="">Select Animal</option>
-                        {animals.map(animal => (
+                        {animals?.map(animal => (
                             <option key={animal._id} value={animal._id}>
                                 {animal.name} ({animal._id.slice(0, 6)})
                             </option>

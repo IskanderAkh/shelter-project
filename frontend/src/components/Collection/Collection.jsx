@@ -31,7 +31,7 @@ const Collection = ({ maxItems }) => {
     return (
         <div className='grid grid-cols-4 gap-y-14 gap-x-24 collectiondiv justify-center items-center'>
             {
-                products.slice(0, maxItems).map((product) => {
+                products?.slice(0, maxItems).map((product) => {
                     console.log(product);
                     
                     return (

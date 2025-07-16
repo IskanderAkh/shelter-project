@@ -77,7 +77,7 @@ const DeleteAnimal = () => {
                 </tr>
               </thead>
               <tbody>
-                {filtered.map((animal) => (
+                {filtered?.map((animal) => (
                   <tr key={animal._id}>
                     <td>{animal.name}</td>
                     <td>{animal.species}</td>

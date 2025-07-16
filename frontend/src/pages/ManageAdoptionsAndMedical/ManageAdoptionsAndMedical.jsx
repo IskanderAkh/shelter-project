@@ -109,13 +109,13 @@ const ManageAdoptionsAndMedical = () => {
             <tbody>
               {adoptions?.map(a => (
                 <tr key={a._id}>
-                  <td>{a.animalId?.name}</td>
-                  <td>{a.adopterId?.fname} {a.adopterId?.lname}</td>
-                  <td>{a.status}</td>
+                  <td>{a?.animalId?.name}</td>
+                  <td>{a?.adopterId?.fname} {a.adopterId?.lname}</td>
+                  <td>{a?.status}</td>
                   <td>{new Date(a.createdAt).toLocaleDateString()}</td>
                   <td className="flex gap-2">
                     <button className="btn btn-sm btn-outline" onClick={() => setEditAdoption(a)}>Edit</button>
-                    <button className="btn btn-sm btn-outline" onClick={() => deleteAdoptionMutation.mutate(a._id)}>Delete</button>
+                    <button className="btn btn-sm btn-outline" onClick={() => deleteAdoptionMutation.mutate(a?._id)}>Delete</button>
                   </td>
                 </tr>
               ))}
