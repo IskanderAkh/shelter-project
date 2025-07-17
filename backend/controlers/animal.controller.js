@@ -226,7 +226,7 @@ export const getAdoptions = async (req, res) => {
 
 export const updateAdoptionStatus = async (req, res) => {
 	try {
-		const { id } = req.params; // Adoption ID
+		const { id } = req.params;
 		const { status } = req.body;
 
 		if (!["Pending", "Approved", "Rejected"].includes(status)) {
@@ -241,6 +241,23 @@ export const updateAdoptionStatus = async (req, res) => {
 		adoption.status = status;
 		await adoption.save();
 
+
+		if (status === "Rejected") {
+			const animal = await Animal.findById(adoption.animalId);
+			if (animal) {
+				animal.adoptionStatus = "Available";
+				await animal.save();
+			}
+		}
+
+		if (status === "Approved") {
+			const animal = await Animal.findById(adoption.animalId);
+			if (animal) {
+				animal.adoptionStatus = "Adopted";
+				await animal.save();
+			}
+		}
+
 		res.status(200).json({ message: "Adoption status updated", adoption });
 	} catch (error) {
 		console.error("Error in updateAdoptionStatus:", error);
@@ -248,9 +265,10 @@ export const updateAdoptionStatus = async (req, res) => {
 	}
 };
 
+
 export const updateAnimalAdoptionStatus = async (req, res) => {
 	try {
-		const { id } = req.params; 
+		const { id } = req.params;
 		const { status } = req.body;
 
 		if (!["Available", "Adopted", "Pending"].includes(status)) {
@@ -274,13 +292,12 @@ export const updateAnimalAdoptionStatus = async (req, res) => {
 
 export const deleteAdoption = async (req, res) => {
 	try {
-	  const { id } = req.params;
-	  const deleted = await Adoption.findByIdAndDelete(id);
-	  if (!deleted) return res.status(404).json({ error: "Adoption not found" });
-	  res.status(200).json({ message: "Adoption deleted successfully" });
+		const { id } = req.params;
+		const deleted = await Adoption.findByIdAndDelete(id);
+		if (!deleted) return res.status(404).json({ error: "Adoption not found" });
+		res.status(200).json({ message: "Adoption deleted successfully" });
 	} catch (err) {
-	  console.error("Error in deleteAdoption:", err);
-	  res.status(500).json({ error: "Internal server error" });
+		console.error("Error in deleteAdoption:", err);
+		res.status(500).json({ error: "Internal server error" });
 	}
-  };
-  
+};

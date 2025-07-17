@@ -3,6 +3,7 @@ import axios from 'axios';
 import React from 'react';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import SideBar from '../../components/SideBar/SideBar';
 
 const Dashboard = ({ authUser }) => {
   const queryClient = useQueryClient();
@@ -53,17 +54,7 @@ const Dashboard = ({ authUser }) => {
   return (
     <div className="flex">
       {/* ✅ Side Navigation */}
-      <aside className="w-64 p-6 border-r min-h-screen space-y-4 bg-base-100">
-        <h2 className="text-2xl font-bold mb-4">Admin Panel</h2>
-        <nav className="flex flex-col gap-3">
-          <Link className="link font-bold" to="/dashboard">Dashboard Main</Link>
-          <Link className="link" to="/add-animal">Add Animal</Link>
-          <Link className="link" to="/delete-animal">Delete Animal</Link>
-          <Link className="link" to="/update-animal">Update Animal</Link>
-          <Link className="link" to="/add-medical-record">Add Medical Record</Link>
-          <Link className="link" to="/manage-adoptions-and-medical">Manage Adoptions And Medical</Link>
-        </nav>
-      </aside>
+      <SideBar />
 
       {/* ✅ Main Content */}
       <main className="flex-1 p-6 space-y-6">

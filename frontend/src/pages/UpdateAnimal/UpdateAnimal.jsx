@@ -3,6 +3,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import SideBar from '../../components/SideBar/SideBar';
 
 const UpdateAnimal = () => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -40,17 +41,8 @@ const UpdateAnimal = () => {
 
     return (
         <div className="flex">
-            <aside className="w-64 p-6 border-r min-h-screen space-y-4 bg-base-100">
-                <h2 className="text-2xl font-bold mb-4">Admin Panel</h2>
-                <nav className="flex flex-col gap-3">
-                          <Link className="link" to="/dashboard">Dashboard Main</Link>
-                          <Link className="link " to="/add-animal">Add Animal</Link>
-                          <Link className="link" to="/delete-animal">Delete Animal</Link>
-                          <Link className="link font-bold" to="/update-animal">Update Animal</Link>
-                          <Link className="link" to="/add-medical-record">Add Medical Record</Link>
-                          <Link className="link" to="/manage-adoptions-and-medical">Manage Adoptions And Medical</Link>
-                        </nav>
-            </aside>
+            <SideBar />
+
             <div className='p-6'>
                 <h1 className='text-2xl font-bold mb-4'>Update Animals</h1>
 

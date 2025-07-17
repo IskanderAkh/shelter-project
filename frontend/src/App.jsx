@@ -21,6 +21,8 @@ import DeleteAnimal from "./pages/DeleteAnimal/DeleteAnimal";
 import AddAnimal from "./pages/AddAnimal/AddAnimal";
 import AddMedicalRecord from "./pages/AddMedicalRecord/AddMedicalRecord";
 import ManageAdoptionsAndMedical from "./pages/ManageAdoptionsAndMedical/ManageAdoptionsAndMedical";
+import CreateAdmin from "./pages/CreateAdmin/CreateAdmin";
+import DeleteAdmin from "./pages/DeleteAdmin/DeleteAdmin";
 
 function App() {
   const location = useLocation();
@@ -70,6 +72,8 @@ function App() {
               <Route path="/add-medical-record" element={<AddMedicalRecord />} />
               <Route path="/add-animal" element={<AddAnimal />} />
               <Route path="/manage-adoptions-and-medical" element={<ManageAdoptionsAndMedical />} />
+              <Route path="/create-admin" element={<CreateAdmin />} />
+              <Route path="/delete-admin" element={<DeleteAdmin />} />
             </>
 
           )}
