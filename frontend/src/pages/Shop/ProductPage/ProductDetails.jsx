@@ -20,25 +20,31 @@ const ProductDetails = ({ product, authUser }) => {
           <p>Gender: {product?.gender}</p>
           <p>Age: {product?.age} years</p>
           <p>Health: {product?.healthStatus}</p>
+          <p className='font-semibold text-black'>Adoption Fee: <span className='product-price font-bold'>${product?.adoptionFee}.00</span> </p>
         </article>
 
-        <div className='flex max-w-lg w-full gap-6 mt-12'>
-          {authUser && <button
-            className='uppercase w-3/4 h-14 btn btn-neutral btn-outline'
-            type="button"
-            disabled={product?.adoptionStatus !== "Available"}
-            onClick={() => setShowAdoptModal(true)}
-          >
-            {product?.adoptionStatus === "Available" ? "Adopt" : "Not Available"}
-          </button>}
-          {!authUser && <button
-            className='uppercase w-3/4 h-14 btn btn-neutral btn-outline'
-            type="button"
-            disabled={true}
-          >
-            Please Login
-          </button>}
+        <div className="flex max-w-lg w-full gap-6 mt-12">
+          {authUser ? (
+            <button
+              className={`uppercase w-3/4 h-14 btn btn-neutral btn-outline ${product?.adoptionStatus !== "Available" ? "btn-disabled cursor-not-allowed opacity-50" : ""
+                }`}
+              type="button"
+              disabled={product?.adoptionStatus !== "Available"}
+              onClick={() => setShowAdoptModal(true)}
+            >
+              {product?.adoptionStatus === "Available" ? "Adopt" : "Not Available"}
+            </button>
+          ) : (
+            <button
+              className="uppercase w-3/4 h-14 btn btn-neutral btn-outline btn-disabled cursor-not-allowed opacity-50"
+              type="button"
+              disabled
+            >
+              Please Login
+            </button>
+          )}
         </div>
+
 
         <div className='flex gap-4 mb-4 mt-9'>
           Animal ID: <p className='text-gray-500'>{product?._id}</p>

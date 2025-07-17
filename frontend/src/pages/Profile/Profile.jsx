@@ -22,13 +22,16 @@ const Profile = () => {
 
   const adoptionId = user?.adoptions?.[0];
 
-  const { data: adoptionData, isLoading: isAdoptionLoading } = useQuery({
-    queryKey: ['adoption', adoptionId],
+  const { data: adoptionsData, isLoading: isAdoptionsLoading } = useQuery({
+    queryKey: ['adoptions', user?.adoptions],
     queryFn: async () => {
-      const res = await axios.get(`/api/animal/adoption/${adoptionId}`);
-      return res.data;
+      const requests = user.adoptions.map((id) =>
+        axios.get(`/api/animal/adoption/${id}`)
+      );
+      const responses = await Promise.all(requests);
+      return responses.map((res) => res.data);
     },
-    enabled: !!adoptionId,
+    enabled: !!user?.adoptions?.length,
   });
 
   if (isLoading) return <div className='p-10 text-center'>Loading...</div>;
@@ -66,23 +69,45 @@ const Profile = () => {
       </div>
 
       {/* Adoption Section */}
+      {/* Adoption Section */}
       <div className="card bg-base-100 shadow-md">
         <div className="card-body">
           <h2 className="card-title text-lg">Adoption Status</h2>
-          {isAdoptionLoading ? (
+          {isAdoptionsLoading ? (
             <p className="text-gray-500 mt-2">Loading adoption info...</p>
-          ) : adoptionData ? (
-            <div className="grid sm:grid-cols-2 gap-4 mt-4">
-              <p><strong>Animal:</strong> {adoptionData.animalId?.name || "Unknown"}</p>
-              <p><strong>Species:</strong> {adoptionData.animalId?.species}</p>
-              <p><strong>Status:</strong> <span className="badge badge-info">{adoptionData.status}</span></p>
-              <p><strong>Requested:</strong> {new Date(adoptionData.createdAt).toLocaleDateString()}</p>
+          ) : adoptionsData?.length ? (
+            <div className="mt-4 space-y-4">
+              {adoptionsData.map((adoption) => (
+                <div
+                  key={adoption._id}
+                  className="border p-4 rounded-lg bg-gray-50"
+                >
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <p><strong>Animal:</strong> {adoption.animalId?.name || 'Unknown'}</p>
+                    <p><strong>Species:</strong> {adoption.animalId?.species || 'N/A'}</p>
+                    <p><strong>Status:</strong>
+                      <span
+                        className={`badge ${adoption.status === 'Approved'
+                            ? 'badge-success'
+                            : adoption.status === 'Rejected'
+                              ? 'badge-error'
+                              : 'badge-info'
+                          }`}
+                      >
+                        {adoption.status}
+                      </span>
+                    </p>
+                    <p><strong>Requested:</strong> {new Date(adoption.createdAt).toLocaleDateString()}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           ) : (
-            <p className="text-gray-500 mt-2">You don't have a current adoption.</p>
+            <p className="text-gray-500 mt-2">You don't have any adoptions.</p>
           )}
         </div>
       </div>
+
     </div>
   );
 };

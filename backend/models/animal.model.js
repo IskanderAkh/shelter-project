@@ -40,9 +40,13 @@ export const animalSchema = new mongoose.Schema({
         enum: ["Available", "Adopted", "Pending"],
         required: true,
     },
-    imgs:{
+    imgs: {
         type: String,
         default: ""
+    },
+    adoptionFee: {
+        type: Number,
+        default: 15.00
     }
 }, { timestamps: true });
 

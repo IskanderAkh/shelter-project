@@ -142,7 +142,10 @@ export const adoptAnimal = async (req, res) => {
 		if (!animal) {
 			return res.status(404).json({ error: "Animal not found" });
 		}
-		const existingAdoption = await Adoption.findOne({ animalId });
+		const existingAdoption = await Adoption.findOne({
+			animalId,
+			status: { $in: ["Pending", "Approved"] } // Or just "Pending" if that's your logic
+		});
 		if (existingAdoption) {
 			return res.status(400).json({ error: "This animal is already in an adoption process" });
 		}
@@ -257,6 +260,13 @@ export const updateAdoptionStatus = async (req, res) => {
 				await animal.save();
 			}
 		}
+		// if (status === "Pending") {
+		// 	const animal = await Animal.findById(adoption.animalId);
+		// 	if (animal) {
+		// 		animal.adoptionStatus = "Adopted";
+		// 		await animal.save();
+		// 	}
+		// }
 
 		res.status(200).json({ message: "Adoption status updated", adoption });
 	} catch (error) {

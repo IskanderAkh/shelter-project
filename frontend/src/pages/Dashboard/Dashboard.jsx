@@ -132,7 +132,6 @@ const Dashboard = ({ authUser }) => {
             </thead>
             <tbody>
               {records?.map(record => (
-                console.log(record),
                 <tr key={record._id}>
                   <td>{record.animalId?.name}</td>
                   <td>{new Date(record.date).toLocaleDateString()}</td>

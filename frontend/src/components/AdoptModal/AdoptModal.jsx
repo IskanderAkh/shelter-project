@@ -1,8 +1,9 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import toast from "react-hot-toast";
 
 const AdoptModal = ({ animalId, onClose }) => {
+    const queryClient = useQueryClient()
     const mutation = useMutation({
         mutationFn: async ({ description }) => {
             const res = await axios.post(`/api/animal/adopt/${animalId}`, {
@@ -12,6 +13,7 @@ const AdoptModal = ({ animalId, onClose }) => {
         },
         onSuccess: () => {
             toast.success("Adoption request sent! Shelter staff will contact you shortly.");
+            queryClient.invalidateQueries(['product', animalId]);
             onClose();
         },
         onError: (error) => {
