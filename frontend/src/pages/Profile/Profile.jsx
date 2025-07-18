@@ -72,7 +72,7 @@ const Profile = () => {
       {/* Adoption Section */}
       <div className="card bg-base-100 shadow-md">
         <div className="card-body">
-          <h2 className="card-title text-lg">Adoption Status</h2>
+          <h2 className="card-title text-lg">Adoption Queries</h2>
           {isAdoptionsLoading ? (
             <p className="text-gray-500 mt-2">Loading adoption info...</p>
           ) : adoptionsData?.length ? (
