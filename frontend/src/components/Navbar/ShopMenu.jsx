@@ -10,9 +10,7 @@ const ShopMenu = () => {
                         <li><p className=' titleText text-black hover:bg-white '>SHOP TYPES</p> </li>
                         <li><Link to={'/shop'} className='text-gray-500 hover:text-black transition'>Pet full width</Link></li>
                         <li><Link to={'/shop'} className='text-gray-500 hover:text-black transition'>Pet With sidebar</Link></li>
-                        <li><Link to={'/shop'} className='text-gray-500 hover:text-black transition'>Pet category</Link></li>
                         <li><Link to={'/shop-carousel'} className='text-gray-500 hover:text-black transition'>Pet carousel</Link></li>
-                        <li><Link to={'/shop'} className='text-gray-500 hover:text-black transition'>Masonry grid</Link></li>
                     </ul>
                 </li>
                 {/* <li className='p-4'>

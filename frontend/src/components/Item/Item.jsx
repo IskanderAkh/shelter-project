@@ -47,19 +47,9 @@ const Item = ({ product }) => {
             <div className='relative item-img-container'>
                 <img className='item-img rounded-lg' src={imgs?.[0]} alt={product?.name} />
                 <div className='item-img-overlay absolute top-0 left-0 w-full h-full bg-white bg-opacity-60 flex justify-center items-center gap-7'>
-                    <button
-                        onClick={() => handleAddToCart(product)}
-                        className='outline-none'
-                        disabled={product?.adoptionStatus !== 'Available'}
-                    >
-                        <img src="/shopping-cart.svg" alt="Add to cart" />
-                    </button>
                     <Link to={`/shop/${id}`}>
                         <img src="/eye.svg" alt="View details" />
                     </Link>
-                    <button className='outline-none'>
-                        <img src="/heart.svg" alt="Favorite" />
-                    </button>
                 </div>
             </div>
             <div className='item-text'>

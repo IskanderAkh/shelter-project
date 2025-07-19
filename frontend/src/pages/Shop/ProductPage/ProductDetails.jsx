@@ -25,16 +25,26 @@ const ProductDetails = ({ product, authUser }) => {
 
         <div className="flex max-w-lg w-full gap-6 mt-12">
           {authUser ? (
-            <button
-              className={`uppercase w-3/4 h-14 btn btn-neutral btn-outline ${product?.adoptionStatus !== "Available" ? "btn-disabled cursor-not-allowed opacity-50" : ""
-                }`}
-              type="button"
-              disabled={product?.adoptionStatus !== "Available"}
-              onClick={() => setShowAdoptModal(true)}
-            >
-              {product?.adoptionStatus === "Available" ? "Adopt" : "Not Available"}
-            </button>
+            authUser.status === "admin" ? (
+              <button
+                className="uppercase w-3/4 h-14 btn btn-neutral btn-outline btn-disabled cursor-not-allowed opacity-50"
+                type="button"
+                disabled
+              >
+                Admins cannot adopt
+              </button>
+            ) : (
+              <button
+                className={`uppercase w-3/4 h-14 btn btn-neutral btn-outline ${product?.adoptionStatus !== "Available" ? "btn-disabled cursor-not-allowed opacity-50" : ""}`}
+                type="button"
+                disabled={product?.adoptionStatus !== "Available"}
+                onClick={() => setShowAdoptModal(true)}
+              >
+                {product?.adoptionStatus === "Available" ? "Adopt" : "Not Available"}
+              </button>
+            )
           ) : (
+
             <button
               className="uppercase w-3/4 h-14 btn btn-neutral btn-outline btn-disabled cursor-not-allowed opacity-50"
               type="button"

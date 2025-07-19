@@ -260,13 +260,14 @@ export const updateAdoptionStatus = async (req, res) => {
 				await animal.save();
 			}
 		}
-		// if (status === "Pending") {
-		// 	const animal = await Animal.findById(adoption.animalId);
-		// 	if (animal) {
-		// 		animal.adoptionStatus = "Adopted";
-		// 		await animal.save();
-		// 	}
-		// }
+		if (status === "Pending") {
+			const animal = await Animal.findById(adoption.animalId);
+			if (animal) {
+				animal.adoptionStatus = "Pending";
+				await animal.save();
+			}
+		}
+
 
 		res.status(200).json({ message: "Adoption status updated", adoption });
 	} catch (error) {

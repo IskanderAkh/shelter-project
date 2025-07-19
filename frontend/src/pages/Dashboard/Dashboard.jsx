@@ -82,7 +82,7 @@ const Dashboard = ({ authUser }) => {
 
         {/* ✅ Recent Adoptions */}
         <div>
-          <h2 className="text-xl font-semibold mb-2">Recent Adoptions</h2>
+          <Link to={'/adoptions'} className="text-xl font-semibold mb-2 link">Recent Adoptions</Link>
           <table className="table">
             <thead>
               <tr>
@@ -119,7 +119,7 @@ const Dashboard = ({ authUser }) => {
 
         {/* ✅ Recent Medical Records */}
         <div>
-          <h2 className="text-xl font-semibold mb-2">Recent Medical Records</h2>
+          <Link to={'/medical-records'} className="text-xl font-semibold mb-2 link" >Recent Medical Records</Link>
           <table className="table">
             <thead>
               <tr>

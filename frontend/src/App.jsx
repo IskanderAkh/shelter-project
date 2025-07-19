@@ -23,6 +23,8 @@ import AddMedicalRecord from "./pages/AddMedicalRecord/AddMedicalRecord";
 import ManageAdoptionsAndMedical from "./pages/ManageAdoptionsAndMedical/ManageAdoptionsAndMedical";
 import CreateAdmin from "./pages/CreateAdmin/CreateAdmin";
 import DeleteAdmin from "./pages/DeleteAdmin/DeleteAdmin";
+import Adoptions from "./pages/Adoptions/Adoptions";
+import AllMedicalRecords from "./pages/AllMedicalRecords/AllMedicalRecords";
 
 function App() {
   const location = useLocation();
@@ -74,6 +76,8 @@ function App() {
               <Route path="/manage-adoptions-and-medical" element={<ManageAdoptionsAndMedical />} />
               <Route path="/create-admin" element={<CreateAdmin />} />
               <Route path="/delete-admin" element={<DeleteAdmin />} />
+              <Route path="/medical-records" element={<AllMedicalRecords />} />
+              <Route path="/adoptions" element={<Adoptions />} />
             </>
 
           )}
